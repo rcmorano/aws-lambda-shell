@@ -1,0 +1,21 @@
+#!/bin/bash
+
+function init_env() {
+
+  export LAMBDA_CWD=$(/assets/bin/lambdash pwd)
+  export LAMBDA_WHOAMI=$(/assets/bin/lambdash whoami)
+  export LAMBDA_HOSTNAME=$(/assets/bin/lambdash hostname)
+
+}
+
+set -f
+
+init_env
+
+while IFS= read -e -p "$LAMBDA_WHOAMI@$LAMBDA_HOSTNAME:$LAMBDA_CWD$ " command
+do 
+
+  history -s "$command"
+  /assets/bin/lambdash $command
+
+done
