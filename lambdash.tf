@@ -3,7 +3,7 @@ module "lambdash" {
 
   function_name = "lambdash"
   description   = "lambda deployment for lambdash to work"
-  handler       = "index.handler"
+  handler       = "lambda-index.handler"
   runtime       = "nodejs8.10"
   timeout       = 300
 
